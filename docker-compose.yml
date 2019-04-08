@@ -1,0 +1,16 @@
+version: "3.7"
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    volumes:
+      - ./public:/home/app/public
+      - ./src:/home/app/src
+      - ./.env.development:/home/app/.env.development
+      - ./package.json:/home/app/package.json
+      - ./yarn.lock:/home/app/yarn.lock
+    restart: always
+    ports:
+      - "3000:80"
